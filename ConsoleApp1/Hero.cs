@@ -14,14 +14,17 @@ namespace ConsoleApp1
         public int XPos { get => x; set => x = value; }
         public int YPos { get => y; set => y = value; }
 
-        public Dictionary<Direction, TileEnum> Vision = new Dictionary<Direction, TileEnum>();
+        public TileEnum North;
+        public TileEnum South;
+        public TileEnum East;
+        public TileEnum West;
 
         public Hero()
         {
-            Vision.Add(Direction.North, TileEnum.Empty);
-            Vision.Add(Direction.South, TileEnum.Empty);
-            Vision.Add(Direction.East, TileEnum.Empty);
-            Vision.Add(Direction.West, TileEnum.Empty);
+            North = TileEnum.Empty;
+            South = TileEnum.Empty;
+            East = TileEnum.Empty;
+            West = TileEnum.Empty;
         }
     }
 }

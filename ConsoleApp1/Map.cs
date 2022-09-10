@@ -35,7 +35,7 @@ namespace ConsoleApp1
                     {
                         tileMap[i,j] = new Tile();
                     }
-                    if(IsAtEdgeOfMap(j, i))
+                    if(IsAtEdgeOfMap(i, j))
                     {
                         tileMap[i, j].TileType = TileEnum.Obstacle; 
                     }
@@ -101,20 +101,20 @@ namespace ConsoleApp1
         {
             if (player != null)
             {
-                player.Vision[Direction.North] = IsValidIndex(player.XPos - 1, player.YPos) ? tileMap[player.XPos - 1, player.YPos].TileType : TileEnum.Empty;
-                player.Vision[Direction.South] = IsValidIndex(player.XPos + 1, player.YPos) ? tileMap[player.XPos + 1, player.YPos].TileType : TileEnum.Empty;
-                player.Vision[Direction.East] = IsValidIndex(player.XPos, player.YPos + 1) ? tileMap[player.XPos, player.YPos + 1].TileType : TileEnum.Empty;
-                player.Vision[Direction.West] = IsValidIndex(player.XPos, player.YPos - 1) ? tileMap[player.XPos, player.YPos - 1].TileType : TileEnum.Empty;
+                player.North = IsValidIndex(player.XPos - 1, player.YPos) ? tileMap[player.XPos - 1, player.YPos].TileType : TileEnum.Empty;
+                player.South = IsValidIndex(player.XPos + 1, player.YPos) ? tileMap[player.XPos + 1, player.YPos].TileType : TileEnum.Empty;
+                player.East = IsValidIndex(player.XPos, player.YPos + 1) ? tileMap[player.XPos, player.YPos + 1].TileType : TileEnum.Empty;
+                player.West = IsValidIndex(player.XPos, player.YPos - 1) ? tileMap[player.XPos, player.YPos - 1].TileType : TileEnum.Empty;
             }
 
             if(enemies != null)
             {
                 foreach(var enemy in enemies)
                 {
-                    enemy.Vision[Direction.North] = IsValidIndex(enemy.XPos - 1, enemy.YPos) ? tileMap[enemy.XPos - 1, enemy.YPos].TileType : TileEnum.Empty;
-                    enemy.Vision[Direction.South] = IsValidIndex(enemy.XPos + 1, enemy.YPos) ? tileMap[enemy.XPos + 1, enemy.YPos].TileType : TileEnum.Empty;
-                    enemy.Vision[Direction.East] = IsValidIndex(enemy.XPos, enemy.YPos + 1) ? tileMap[enemy.XPos, enemy.YPos + 1].TileType : TileEnum.Empty;
-                    enemy.Vision[Direction.West] = IsValidIndex(enemy.XPos, enemy.YPos - 1) ? tileMap[enemy.XPos, enemy.YPos - 1].TileType : TileEnum.Empty;
+                    enemy.North = IsValidIndex(enemy.XPos - 1, enemy.YPos) ? tileMap[enemy.XPos - 1, enemy.YPos].TileType : TileEnum.Empty;
+                    enemy.South = IsValidIndex(enemy.XPos + 1, enemy.YPos) ? tileMap[enemy.XPos + 1, enemy.YPos].TileType : TileEnum.Empty;
+                    enemy.East = IsValidIndex(enemy.XPos, enemy.YPos + 1) ? tileMap[enemy.XPos, enemy.YPos + 1].TileType : TileEnum.Empty;
+                    enemy.West = IsValidIndex(enemy.XPos, enemy.YPos - 1) ? tileMap[enemy.XPos, enemy.YPos - 1].TileType : TileEnum.Empty;
                 }
             }
         }

@@ -13,10 +13,6 @@ namespace ConsoleApp1
         static readonly char creature = 'C';
         static readonly char empty = '.';
         static readonly char obstacle = 'X';
-
-        Dictionary<TileEnum, char> tiles = new Dictionary<TileEnum, char>() { { TileEnum.Hero, hero}, { TileEnum.Swamp, swamp}, { TileEnum.Enemy, creature},
-            { TileEnum.Empty , empty}, { TileEnum.Obstacle, obstacle}, };
-
         Map map;
         public Map Map { get => map; private set => map = value; }
 
@@ -30,7 +26,24 @@ namespace ConsoleApp1
             {
                 for(int j = 0; j < tileMap.GetLength(1); j++)
                 {
-                    resultString += tiles[tileMap[i, j].TileType];
+                    switch (tileMap[i, j].TileType)
+                    {
+                    case TileEnum.Hero:
+                        resultString += hero;
+                        break;
+                    case TileEnum.Swamp:
+                        resultString += swamp;
+                        break;
+                    case TileEnum.Enemy:
+                        resultString += creature;
+                        break;
+                    case TileEnum.Empty:
+                        resultString += empty;
+                        break;
+                    case TileEnum.Obstacle:
+                        resultString += obstacle;
+                        break;
+                    }
                 }
                 resultString += "/n";
             }
