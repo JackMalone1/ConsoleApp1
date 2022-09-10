@@ -27,10 +27,14 @@ namespace ConsoleApp1
             tileMap = new Tile[mapWidth, mapHeight];
             player = new Hero();//ensure that player is not null leaving the constructor
 
-            for(int i = 0; i < mapHeight; i++)
+            for(int i = 0; i < mapWidth; i++)
             {
-                for(int j = 0; j < mapWidth; j++)
+                for(int j = 0; j < mapHeight; j++)
                 {
+                    if(tileMap[i, j] == null)
+                    {
+                        tileMap[i,j] = new Tile();
+                    }
                     if(IsAtEdgeOfMap(j, i))
                     {
                         tileMap[i, j].TileType = TileEnum.Obstacle; 
@@ -61,8 +65,8 @@ namespace ConsoleApp1
             int yPos;
             do
             {
-                xPos = random.Next(mapWidth, mapHeight);
-                yPos = random.Next(mapHeight, mapWidth);
+                xPos = random.Next(0, mapWidth);
+                yPos = random.Next(0, mapHeight);
             } while (IsValidIndexToPlaceAt(xPos, yPos));
 
             switch (type)
