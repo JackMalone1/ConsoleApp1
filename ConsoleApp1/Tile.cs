@@ -13,17 +13,28 @@ namespace ConsoleApp1
         Empty,
         Obstacle,
         Swamp,
+        Gold,
+        Weapon,
     }
 
-    internal class Tile
+    internal abstract class Tile
     {
-        TileEnum tileType;
+        protected int x;
+        protected int y;
+
+        protected TileEnum tileType;
 
         public TileEnum TileType { get => tileType; set => tileType = value; }
 
-        public Tile(TileEnum tileEnum = TileEnum.Empty)
+        public int X { get => x; set => x = value; }
+
+        protected int Y { get => y; set => y = value; }
+
+        public Tile(TileEnum tileEnum = TileEnum.Empty, int x = 0, int y = 0)
         {
             tileType = tileEnum;
+            this.x = x;
+            this.y = y;
         }
     }
 }

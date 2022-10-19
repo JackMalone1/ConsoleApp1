@@ -1,30 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Enemy
+    internal abstract class Enemy : Character
     {
-        int x;
-        int y;
-
-        public int XPos { get => x; set => x = value; }
-        public int YPos { get => y; set => y = value; }
-
-        public TileEnum North;
-        public TileEnum South;
-        public TileEnum East;
-        public TileEnum West;
-
-        public Enemy()
+        protected Random random;
+        public Enemy(int x, int y, char symbol, int damage) : base(x, y, symbol)
         {
-            North = TileEnum.Empty;
-            South = TileEnum.Empty;
-            East =  TileEnum.Empty;
-            West = TileEnum.Empty;
+            this.damage = damage;
+            random = new Random();
+        }
+
+        public override Movement ReturnMove(Movement move)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Enemy at [{0},{1}]({2})", x, y, damage);
         }
     }
 }
